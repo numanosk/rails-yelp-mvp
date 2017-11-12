@@ -1,0 +1,32 @@
+<div class="container", style="margin-bottom: 15px">
+  <div class="row">
+    <h2>Restaurants</h2>
+    <div class="col">
+      <ul class="nav nav-pills">
+        <li role="presentation" class="<%= 'active' if @category.nil? %>">
+          <%= link_to "All", restaurants_path %>
+        </li>
+        <% Restaurant.categories.each do |category| %>
+          <li role="presentation" class="<%= 'active' if category == @category %>">
+            <%= link_to category, restaurants_path(category: category)  %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="card"  style="width: 40rem">
+          <img src="https://picsum.photos/g/200/200/?random" alt="Card image cap" class="card-img-top">
+          <h4><strong><%= link_to restaurant.name, restaurant_path(restaurant) %></strong></h4>
+          <p>#<%= restaurant.category %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

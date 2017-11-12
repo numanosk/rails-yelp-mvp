@@ -1,0 +1,32 @@
+<%= link_to 'Edit', edit_admin_restaurant_path(@restaurant), class: 'btn btn-danger' %>
+<%= link_to 'Delete', admin_restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+        <div class="card"  style="width: 40rem">
+          <img src="https://picsum.photos/g/200/200/?random" alt="Card image cap" class="card-img-top">
+          <h2><%= @restaurant.name %></h2>
+          <p>#<%= @restaurant.category %></p>
+          <p><em><%= @restaurant.address %></em></p>
+          <p><em><%= @restaurant.phone_number %></em></p>
+          <p>Comments</p>
+          <ul>
+            <% @restaurant.reviews.each do |review| %>
+              <li>
+                  Rating: <%= review.rating %>
+                  Content: <%= review.content %>
+                  <%= link_to 'Edit', edit_admin_restaurant_review_path(@restaurant, review), class: 'btn btn-danger' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+  </div>
+  <div style="margin-top: 100px">
+    <h6>#<%= link_to 'Add a review', new_restaurant_review_path(@restaurant) %></h6>
+    <h6>#<%= link_to 'Back to list', admin_restaurants_path %></h6>
+  </div>
+</div>
+
+

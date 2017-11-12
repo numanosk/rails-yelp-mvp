@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+       <%= simple_form_for @restaurant, :url => admin_restaurant_path(@restaurant) do |f| %>
+        <%= f.input :name, label: 'Name', placeholder: 'Gokan'%>
+        <%= f.input :category, collection: Restaurant::CATEGORIES, prompt: 'Choose a type of food'%>
+        <%= f.input :address, placeholder: '20, rue du Bac' %>
+        <%= f.input :phone_number, placeholder: '301-172-7304', label_html: {class: 'badge badge-default'} %>
+        <div class="text-center">
+          <%= f.submit class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
